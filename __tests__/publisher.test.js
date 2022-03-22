@@ -14,10 +14,10 @@ describe('local-bookstore routes', () => {
 
   test('should create a publisher table row', async () => {
     const expected = {
-      name: 'Bantam USA',
-      city: 'New York City',
-      state: 'NY',
-      country: 'US',
+      name: 'Pengiun',
+      city: 'London',
+      state: '',
+      country: 'England',
     };
     const resp = await request(app).post('/api/v1/publishers').send(expected);
     expect(resp.body).toEqual({
