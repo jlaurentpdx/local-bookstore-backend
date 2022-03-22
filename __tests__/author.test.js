@@ -58,4 +58,9 @@ describe('local-bookstore routes', () => {
     const resp = await request(app).get('/api/v1/authors/1');
     expect(resp.body).toEqual(expected);
   });
+
+  test('should display a 404 error on a bad request', async () => {
+    const resp = await request(app).get('/api/v1/authors/fake');
+    expect(resp.status).toEqual(404);
+  });
 });
