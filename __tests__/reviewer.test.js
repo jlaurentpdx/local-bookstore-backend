@@ -18,6 +18,6 @@ describe('local-bookstore routes', () => {
       company: 'Bo Jo Inc.',
     };
     const resp = await request(app).post('/api/v1/reviewers').send(expected);
-    expect(resp.body).toEqual({ reviewer_id: expect.any(String), ...expected });
+    expect(resp.body).toEqual({ id: expect.any(String), ...expected });
   });
 });
