@@ -42,4 +42,14 @@ describe('local-bookstore routes', () => {
     const resp = await request(app).get('/api/v1/reviewers');
     expect(resp.body).toEqual(expect.arrayContaining(expected));
   });
+
+  test('should display a reviewer by id', async () => {
+    const expected = {
+      id: '2',
+      name: 'Benjamin Doubellewe',
+      company: 'Pikes Peak Library District',
+    };
+    const resp = await request(app).get('/api/v1/reviewers/2');
+    expect(resp.body).toEqual(expected);
+  });
 });
