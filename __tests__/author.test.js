@@ -15,7 +15,7 @@ describe('local-bookstore routes', () => {
   test('should create an author table row', async () => {
     const expected = {
       name: 'Haruki Murakami',
-      dob: '1949-01-12',
+      dob: '1/12/1949',
       pob: 'Kyoto, Japan',
     };
     const resp = await request(app).post('/api/v1/authors').send(expected);
