@@ -19,6 +19,6 @@ describe('local-bookstore routes', () => {
       pob: 'Kyoto, Japan',
     };
     const resp = await request(app).post('/api/v1/authors').send(expected);
-    expect(resp.body).toEqual({ id: expect.any(String), ...expected });
+    expect(resp.body).toEqual({ author_id: expect.any(String), ...expected });
   });
 });
