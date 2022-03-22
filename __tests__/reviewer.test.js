@@ -20,4 +20,26 @@ describe('local-bookstore routes', () => {
     const resp = await request(app).post('/api/v1/reviewers').send(expected);
     expect(resp.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  test('should display a list of all reviewers', async () => {
+    const expected = [
+      {
+        id: '1',
+        name: 'Jabroni Phillips',
+        company: 'Haterade.com',
+      },
+      {
+        id: '2',
+        name: 'Benjamin Doubellewe',
+        company: 'Pikes Peak Library District',
+      },
+      {
+        id: '3',
+        name: 'Eratemica Jacobs',
+        company: 'New York Times',
+      },
+    ];
+    const resp = await request(app).get('/api/v1/reviewers');
+    expect(resp.body).toEqual(expect.arrayContaining(expected));
+  });
 });
