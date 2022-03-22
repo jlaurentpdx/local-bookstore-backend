@@ -25,4 +25,32 @@ describe('local-bookstore routes', () => {
       ...expected,
     });
   });
+
+  test('should display all publishers', async () => {
+    const expected = [
+      {
+        publisher_id: '1',
+        name: 'Bantam USA',
+        city: 'New York City',
+        state: 'NY',
+        country: 'US',
+      },
+      {
+        publisher_id: '2',
+        name: 'Tom Doherty',
+        city: 'New York City',
+        state: 'NY',
+        country: 'US',
+      },
+      {
+        publisher_id: '3',
+        name: 'Simon & Schuster',
+        city: 'New York City',
+        state: 'NY',
+        country: 'US',
+      },
+    ];
+    const resp = await request(app).get('/api/v1/publishers');
+    expect(resp.body).toEqual(expect.arrayContaining(expected));
+  });
 });
