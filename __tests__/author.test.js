@@ -46,4 +46,16 @@ describe('local-bookstore routes', () => {
     const resp = await request(app).get('/api/v1/authors');
     expect(resp.body).toEqual(expect.arrayContaining(expected));
   });
+
+  test('should display an author by ID', async () => {
+    const expected = {
+      author_id: '1',
+      name: 'Tom Robbins',
+      dob: '7/22/1932',
+      pob: 'Blowing Rock, NC, US',
+    };
+
+    const resp = await request(app).get('/api/v1/authors/1');
+    expect(resp.body).toEqual(expected);
+  });
 });
