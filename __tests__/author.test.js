@@ -15,10 +15,35 @@ describe('local-bookstore routes', () => {
   test('should create an author table row', async () => {
     const expected = {
       name: 'Haruki Murakami',
-      dob: '1949-01-12',
+      dob: '1/12/1949',
       pob: 'Kyoto, Japan',
     };
     const resp = await request(app).post('/api/v1/authors').send(expected);
     expect(resp.body).toEqual({ author_id: expect.any(String), ...expected });
+  });
+
+  test('should display all authors', async () => {
+    const expected = [
+      {
+        author_id: '1',
+        name: 'Tom Robbins',
+        dob: '7/22/1932',
+        pob: 'Blowing Rock, NC, US',
+      },
+      {
+        author_id: '2',
+        name: 'Liu Cixin',
+        dob: '6/23/1963',
+        pob: 'Beijing, China',
+      },
+      {
+        author_id: '3',
+        name: 'Oliver Sacks',
+        dob: '7/9/1933',
+        pob: 'London, England',
+      },
+    ];
+    const resp = await request(app).get('/api/v1/authors');
+    expect(resp.body).toEqual(expect.arrayContaining(expected));
   });
 });
