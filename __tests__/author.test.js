@@ -27,19 +27,19 @@ describe('local-bookstore routes', () => {
       {
         author_id: '1',
         name: 'Tom Robbins',
-        dob: '1932-07-22T08:00:00.000Z',
+        dob: '7/22/1932',
         pob: 'Blowing Rock, NC, US',
       },
       {
         author_id: '2',
         name: 'Liu Cixin',
-        dob: '1963-06-23T07:00:00.000Z',
+        dob: '6/23/1963',
         pob: 'Beijing, China',
       },
       {
         author_id: '3',
         name: 'Oliver Sacks',
-        dob: '1933-07-09T08:00:00.000Z',
+        dob: '7/9/1933',
         pob: 'London, England',
       },
     ];
