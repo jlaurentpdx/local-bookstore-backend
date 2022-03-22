@@ -53,4 +53,17 @@ describe('local-bookstore routes', () => {
     const resp = await request(app).get('/api/v1/publishers');
     expect(resp.body).toEqual(expect.arrayContaining(expected));
   });
+
+  test('should display a publisher by ID', async () => {
+    const expected = {
+      publisher_id: '1',
+      name: 'Bantam USA',
+      city: 'New York City',
+      state: 'NY',
+      country: 'US',
+    };
+
+    const resp = await request(app).get('/api/v1/publishers/1');
+    expect(resp.body).toEqual(expected);
+  });
 });
