@@ -16,6 +16,32 @@ VALUES
     ('Liu Cixin', '1963-06-23', 'Beijing, China'),
     ('Oliver Sacks', '1933-07-09', 'London, England');
 
+CREATE TABLE books (
+    book_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title TEXT NOT NULL,
+    released INT NOT NULL
+);
+
+INSERT INTO
+    books (title, released)
+VALUES
+    ('Jitterbug Perfume', 1984),
+    ('The Three-body Problem', 2008),
+    ('The Man Who Mistook His Wife for a Hat', 1985);
+
+CREATE TABLE authors_books (
+    author_id BIGINT REFERENCES authors(author_id),
+    book_id BIGINT REFERENCES books(book_id)
+);
+
+INSERT INTO 
+    authors_books
+VALUES
+    (1, 1),
+    (2, 2),
+    (3, 3);
+
+
 
 CREATE TABLE publishers (
     publisher_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -46,15 +72,3 @@ VALUES
     ('Benjamin Doubellewe', 'Pikes Peak Library District'),
     ('Eratemica Jacobs', 'New York Times');
 
-CREATE TABLE books (
-    book_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    title TEXT NOT NULL,
-    released INT NOT NULL
-);
-
-INSERT INTO
-    books (title, released)
-VALUES
-    ('Jitterbug Perfume', 1984),
-    ('The Three-body Problem', 2008),
-    ('The Man Who Mistook His Wife for a Hat', 1985);
