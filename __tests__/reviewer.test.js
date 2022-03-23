@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Reviewer = require('../lib/models/Reviewer');
 
 describe('local-bookstore routes', () => {
   beforeEach(() => {
@@ -18,6 +19,7 @@ describe('local-bookstore routes', () => {
       company: 'Bo Jo Inc.',
     };
     const resp = await request(app).post('/api/v1/reviewers').send(expected);
+
     expect(resp.body).toEqual({ id: expect.any(String), ...expected });
   });
 
@@ -40,6 +42,7 @@ describe('local-bookstore routes', () => {
       },
     ];
     const resp = await request(app).get('/api/v1/reviewers');
+
     expect(resp.body).toEqual(expect.arrayContaining(expected));
   });
 
@@ -50,6 +53,7 @@ describe('local-bookstore routes', () => {
       company: 'Pikes Peak Library District',
     };
     const resp = await request(app).get('/api/v1/reviewers/2');
+
     expect(resp.body).toEqual(expected);
   });
 
@@ -59,10 +63,26 @@ describe('local-bookstore routes', () => {
       name: 'Benjamin W. Doubelewe',
       company: 'Pikes Peak Library District',
     };
-
     const resp = await request(app)
       .put('/api/v1/reviewers/2')
       .send({ name: 'Benjamin W. Doubelewe' });
+
     expect(resp.body).toEqual(expected);
+  });
+
+  test('should delete an existing reviewer with no reviews', async () => {
+    const expected = {
+      id: '1',
+      name: 'Jabroni Phillips',
+      company: 'Haterade.com',
+    };
+
+    const resp = await request(app).delete('/api/v1/reviewers/1');
+
+    expect(resp.body).toEqual(expected);
+
+    const excludeDeleted = await Reviewer.getAll();
+
+    expect(excludeDeleted).not.toContainEqual(expected);
   });
 });
