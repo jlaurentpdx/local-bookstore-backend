@@ -20,4 +20,26 @@ describe('local-bookstore routes', () => {
     const resp = await request(app).post('/api/v1/books').send(expected);
     expect(resp.body).toEqual({ book_id: expect.any(String), ...expected });
   });
+
+  test('should display all books', async () => {
+    const expected = [
+      {
+        book_id: '1',
+        title: 'Jitterbug Perfume',
+        released: 1984,
+      },
+      {
+        book_id: '2',
+        title: 'The Three-body Problem',
+        released: 2008,
+      },
+      {
+        book_id: '3',
+        title: 'The Man Who Mistook His Wife for a Hat',
+        released: 1985,
+      },
+    ];
+    const resp = await request(app).get('/api/v1/books');
+    expect(resp.body).toEqual(expect.arrayContaining(expected));
+  });
 });
