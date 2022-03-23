@@ -42,4 +42,15 @@ describe('local-bookstore routes', () => {
     const resp = await request(app).get('/api/v1/books');
     expect(resp.body).toEqual(expect.arrayContaining(expected));
   });
+
+  test('should display an book by ID', async () => {
+    const expected = {
+      book_id: '1',
+      title: 'Jitterbug Perfume',
+      released: 1984,
+    };
+
+    const resp = await request(app).get('/api/v1/books/1');
+    expect(resp.body).toEqual(expected);
+  });
 });
