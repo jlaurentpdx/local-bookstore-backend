@@ -57,6 +57,11 @@ describe('local-bookstore routes', () => {
     expect(resp.body).toEqual(expected);
   });
 
+  test('should display a 404 error on bad request', async () => {
+    const resp = await request(app).get('/api/v1/reviewers/bad');
+    expect(resp.status).toEqual(404);
+  });
+
   test('should update an existing reviewer', async () => {
     const expected = {
       id: '2',
