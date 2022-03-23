@@ -52,7 +52,7 @@ describe('local-bookstore routes', () => {
       name: 'Benjamin Doubellewe',
       company: 'Pikes Peak Library District',
     };
-    const resp = await request(app).get('/api/v1/reviewers/2');
+    const resp = await request(app).get(`/api/v1/reviewers/${expected.id}`);
 
     expect(resp.body).toEqual(expected);
   });
@@ -71,13 +71,11 @@ describe('local-bookstore routes', () => {
   });
 
   test('should delete an existing reviewer with no reviews', async () => {
-    const expected = {
-      id: '1',
-      name: 'Jabroni Phillips',
-      company: 'Haterade.com',
-    };
-
-    const resp = await request(app).delete('/api/v1/reviewers/1');
+    const expected = await Reviewer.insert({
+      name: 'Phony Man',
+      company: 'phonybooky',
+    });
+    const resp = await request(app).delete(`/api/v1/reviewers/${expected.id}`);
 
     expect(resp.body).toEqual(expected);
 
