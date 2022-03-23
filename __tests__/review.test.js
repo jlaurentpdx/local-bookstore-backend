@@ -39,4 +39,15 @@ describe('reviews table routes', () => {
 
     expect(resp.body).toEqual(expect.arrayContaining(expected));
   });
+
+  test('should display a review by ID', async () => {
+    const expected = {
+      id: '2',
+      rating: 1,
+      review: 'wow so bad',
+    };
+    const resp = await request(app).get('/api/v1/reviews/2');
+
+    expect(resp.body).toEqual(expected);
+  });
 });
