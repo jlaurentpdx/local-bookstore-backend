@@ -21,4 +21,22 @@ describe('reviews table routes', () => {
 
     expect(resp.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  test('should display all reviews', async () => {
+    const expected = [
+      {
+        id: '1',
+        rating: 4,
+        review: 'pretty good I guess',
+      },
+      {
+        id: '2',
+        rating: 1,
+        review: 'wow so bad',
+      },
+    ];
+    const resp = await request(app).get('/api/v1/reviews');
+
+    expect(resp.body).toEqual(expect.arrayContaining(expected));
+  });
 });
