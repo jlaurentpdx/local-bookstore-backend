@@ -53,6 +53,7 @@ describe('local-bookstore routes', () => {
       name: 'Tom Robbins',
       dob: '7/22/1932',
       pob: 'Blowing Rock, NC, US',
+      books: [{ book_id: '1', title: 'Jitterbug Perfume', released: 1984 }]
     };
 
     const resp = await request(app).get('/api/v1/authors/1');
