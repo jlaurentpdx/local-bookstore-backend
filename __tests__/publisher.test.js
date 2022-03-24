@@ -61,6 +61,7 @@ describe('local-bookstore routes', () => {
       city: 'New York City',
       state: 'NY',
       country: 'US',
+      books: [{ book_id: '1', title: 'Jitterbug Perfume' }],
     };
 
     const resp = await request(app).get('/api/v1/publishers/1');
