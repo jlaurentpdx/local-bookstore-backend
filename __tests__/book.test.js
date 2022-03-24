@@ -48,6 +48,16 @@ describe('local-bookstore routes', () => {
       book_id: '1',
       title: 'Jitterbug Perfume',
       released: 1984,
+      publisher: '1',
+      authors: [{ author_id: '1', name: 'Tom Robbins' }],
+      reviews: [
+        {
+          review_id: '1',
+          rating: 4,
+          review: 'pretty good I guess',
+          reviewer: { reviewer_id: '1', name: 'Jabroni Phillips' },
+        },
+      ],
     };
 
     const resp = await request(app).get('/api/v1/books/1');
