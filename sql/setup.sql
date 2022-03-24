@@ -72,3 +72,29 @@ VALUES
     ('Benjamin Doubellewe', 'Pikes Peak Library District'),
     ('Eratemica Jacobs', 'New York Times');
 
+CREATE TABLE books (
+    book_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title TEXT NOT NULL,
+    released INT NOT NULL
+);
+
+INSERT INTO
+    books (title, released)
+VALUES
+    ('Jitterbug Perfume', 1984),
+    ('The Three-body Problem', 2008),
+    ('The Man Who Mistook His Wife for a Hat', 1985);
+
+
+CREATE TABLE reviews (
+    review_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    rating INT NOT NULL,
+    review VARCHAR(140) NOT NULL
+);
+
+INSERT INTO
+    reviews (rating, review)
+VALUES
+    (4, 'pretty good I guess'),
+    (1, 'wow so bad'),
+    (5, 'I love this book or w/e')
