@@ -48,7 +48,7 @@ describe('local-bookstore routes', () => {
       book_id: '1',
       title: 'Jitterbug Perfume',
       released: 1984,
-      publisher: '1',
+      publisher: { publisher_id: '1' },
       authors: [{ author_id: '1', name: 'Tom Robbins' }],
       reviews: [
         {
