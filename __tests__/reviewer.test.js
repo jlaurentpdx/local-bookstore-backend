@@ -51,6 +51,15 @@ describe('local-bookstore routes', () => {
       id: '2',
       name: 'Benjamin Doubellewe',
       company: 'Pikes Peak Library District',
+      reviews: [
+        {
+          review_id: '2',
+          rating: 1,
+          review: 'wow so bad',
+          book_id: '2',
+          title: 'The Three-body Problem'
+        },
+      ],
     };
     const resp = await request(app).get(`/api/v1/reviewers/${expected.id}`);
 
