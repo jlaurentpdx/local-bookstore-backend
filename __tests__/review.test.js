@@ -51,13 +51,19 @@ describe('reviews table routes', () => {
     expect(resp.body).toEqual(expected);
   });
 
+  test('should display a 404 error on bad request', async () => {
+    const resp = await request(app).get('/api/v1/reviews/fake');
+
+    expect(resp.status).toEqual(404);
+  });
+
   test('should delete a review by ID', async () => {
     const expected = {
       id: '2',
       rating: 1,
       review: 'wow so bad',
     };
-    const resp = await request(app).get('/api/v1/reviews/2');
+    const resp = await request(app).delete('/api/v1/reviews/2');
 
     expect(resp.body).toEqual(expected);
   });
