@@ -1,5 +1,8 @@
 # local-bookstore-backend
 
+## Planning
+[Miro](https://miro.com/app/board/uXjVODSCa-M=/?invite_link_id=131563871438)
+
 ## Endpoints
 `GET`
 
