@@ -42,9 +42,9 @@ CREATE TABLE books (
 INSERT INTO
     books (title, released, publisher_id)
 VALUES
-    ('Jitterbug Perfume', 1984, '1'),
-    ('The Three-body Problem', 2008, '2'),
-    ('The Man Who Mistook His Wife for a Hat', 1985, '3');
+    ('Jitterbug Perfume', 1984, 1),
+    ('The Three-body Problem', 2008, 2),
+    ('The Man Who Mistook His Wife for a Hat', 1985, 3);
 
 CREATE TABLE authors_books (
     author_id BIGINT REFERENCES authors(author_id),
