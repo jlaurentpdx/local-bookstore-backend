@@ -91,6 +91,11 @@ describe('local-bookstore routes', () => {
     expect(resp.body).toEqual(expected);
   });
 
+  test('should fail to delete an existing reviewer with reviews', async () => {
+    const resp = await request(app).delete('/api/v1/reviewers/3');
+    expect(resp.status).toEqual(404);
+  });
+
   test('should delete an existing reviewer with no reviews', async () => {
     const expected = await Reviewer.insert({
       name: 'Phony Man',
