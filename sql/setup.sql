@@ -85,4 +85,5 @@ INSERT INTO
 VALUES
     (4, 'pretty good I guess', 1, 1),
     (0, 'wow so bad', 2, 2),
-    (5, 'I love this book or w/e', 3, 3)
+    (5, 'I love this book or w/e', 3, 3),
+    (3, 'Three bodies, three stars', 3, 2);
