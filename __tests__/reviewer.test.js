@@ -54,10 +54,10 @@ describe('local-bookstore routes', () => {
       reviews: [
         {
           review_id: '2',
-          rating: 1,
+          rating: 0,
           review: 'wow so bad',
           book_id: '2',
-          title: 'The Three-body Problem'
+          title: 'The Three-body Problem',
         },
       ],
     };
