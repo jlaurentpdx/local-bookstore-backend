@@ -48,16 +48,23 @@ describe('local-bookstore routes', () => {
 
   test('should display a reviewer by id', async () => {
     const expected = {
-      id: '2',
-      name: 'Benjamin Doubellewe',
-      company: 'Pikes Peak Library District',
+      id: '3',
+      name: 'Eratemica Jacobs',
+      company: 'New York Times',
       reviews: [
         {
-          review_id: '2',
-          rating: 1,
-          review: 'wow so bad',
+          review_id: '3',
+          rating: 5,
+          review: 'I love this book or w/e',
+          book_id: '3',
+          book_title: 'The Man Who Mistook His Wife for a Hat',
+        },
+        {
+          review_id: '4',
+          rating: 3,
+          review: 'Three bodies, three stars',
           book_id: '2',
-          title: 'The Three-body Problem'
+          book_title: 'The Three-body Problem',
         },
       ],
     };

@@ -84,5 +84,6 @@ INSERT INTO
     reviews (rating, review, reviewer_id, book_id)
 VALUES
     (4, 'pretty good I guess', 1, 1),
-    (1, 'wow so bad', 2, 2),
-    (5, 'I love this book or w/e', 3, 3)
+    (0, 'wow so bad', 2, 2),
+    (5, 'I love this book or w/e', 3, 3),
+    (3, 'Three bodies, three stars', 3, 2);
