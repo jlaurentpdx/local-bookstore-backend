@@ -16,6 +16,7 @@ describe('reviews table routes', () => {
     const expected = {
       rating: 3,
       review: 'Surprisingly mediocre.',
+      book_id: '2',
     };
     const resp = await request(app).post('/api/v1/reviews').send(expected);
 
@@ -28,30 +29,20 @@ describe('reviews table routes', () => {
         id: '1',
         rating: 4,
         review: 'pretty good I guess',
+        book_id: '1',
+        book_title: 'Jitterbug Perfume',
       },
       {
         id: '2',
         rating: 1,
         review: 'wow so bad',
+        book_id: '2',
+        book_title: 'The Three-body Problem',
       },
     ];
     const resp = await request(app).get('/api/v1/reviews');
 
     expect(resp.body).toEqual(expect.arrayContaining(expected));
-  });
-
-  test.only('should display a review by ID', async () => {
-    const expected = {
-      id: '2',
-      rating: 1,
-      review: 'wow so bad',
-      book_id: '2',
-      title: 'The Three-body Problem'
-    };
-    
-    const resp = await request(app).get('/api/v1/reviews/2');
-
-    expect(resp.body).toEqual(expected);
   });
 
   test('should display a 404 error on bad request', async () => {
@@ -65,6 +56,7 @@ describe('reviews table routes', () => {
       id: '2',
       rating: 1,
       review: 'wow so bad',
+      book_id: '2',
     };
     const resp = await request(app).delete('/api/v1/reviews/2');
 
